@@ -20,12 +20,18 @@ export type Deal = {
 
 export const categories = [
   'All categories',
+  'Beauty & Personal Care',
+  'Health & Household',
+  'Toys & Games',
+  'Sports & Outdoors',
+  'Pet Supplies',
+  'Grocery & Gourmet Food',
+  'Baby Products',
   'Electronics',
   'Computers',
   'Home & Kitchen',
-  'Fashion',
+  'Clothing, Shoes & Jewelry',
   'Beauty',
-  'Sports & Outdoors',
   'Office',
 ] as const;
 
@@ -60,7 +66,7 @@ export const deals: Deal[] = [
     features: ['Breathable knit upper', 'Cushioned footbed', 'Flexible traction sole', 'Machine-washable design'],
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85',
     gallery: ['https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=900&q=85'],
-    category: 'Fashion', price: 41.25, originalPrice: 54.99, discount: 25, rating: 4.5, reviews: 12904,
+    category: 'Clothing, Shoes & Jewelry', price: 41.25, originalPrice: 54.99, discount: 25, rating: 4.5, reviews: 12904,
     prime: true, availability: 'In stock', badge: 'Popular', engagement: 91,
   },
   {
