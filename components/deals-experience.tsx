@@ -3,23 +3,27 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import {
   ArrowRight,
+  Baby,
   BadgeCheck,
   Bell,
-  ChevronDown,
+  Bone,
   Flame,
+  Gamepad2,
   Headphones,
   Heart,
+  HeartPulse,
   Home,
   Laptop,
   Search,
   ShieldCheck,
   ShoppingBag,
+  ShoppingBasket,
   SlidersHorizontal,
   Sparkles,
   Star,
   Tag,
   Truck,
-  X,
+  Utensils,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -38,7 +42,21 @@ import { categories, deals, type Deal } from '@/lib/deals';
 type User = { name: string; email: string } | null;
 type DiscountFilter = 0 | 15 | 25 | 50;
 
-const categoryIcons = [Headphones, Laptop, Home, ShoppingBag, Sparkles];
+const categoryIcons = {
+  'Beauty & Personal Care': Sparkles,
+  'Health & Household': HeartPulse,
+  'Toys & Games': Gamepad2,
+  'Sports & Outdoors': ShoppingBasket,
+  'Pet Supplies': Bone,
+  'Grocery & Gourmet Food': Utensils,
+  'Baby Products': Baby,
+  Electronics: Headphones,
+  Computers: Laptop,
+  'Home & Kitchen': Home,
+  'Clothing, Shoes & Jewelry': ShoppingBag,
+  Beauty: Sparkles,
+  Office: ShoppingBag,
+};
 
 function DealCard({
   deal,
@@ -262,9 +280,9 @@ export function DealsExperience({ user, signInPath }: { user: User; signInPath: 
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          <div className="flex gap-3 overflow-x-auto pb-2">
-            {categories.slice(1, 6).map((label, index) => {
-              const Icon = categoryIcons[index];
+          <div className="flex gap-3 overflow-x-auto pb-2" aria-label="Amazon departments">
+            {categories.slice(1).map((label) => {
+              const Icon = categoryIcons[label as keyof typeof categoryIcons] ?? ShoppingBag;
               return <button type="button" key={label} onClick={() => setCategory(label)} className={`flex shrink-0 items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-bold shadow-sm transition ${category === label ? 'border-[#ff9f1c] bg-[#fff3df] text-[#16283b]' : 'bg-white text-[#294158] hover:border-[#ffb341]'}`}><Icon className="size-4 text-[#d96c00]" />{label}</button>;
             })}
           </div>
